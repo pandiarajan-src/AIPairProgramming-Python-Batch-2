@@ -2,6 +2,25 @@
 number_algorithms.py
 
 This Python program implements various number and string algorithms as separate functions.
+
+Prompt given:
+Create a new number_algorithms.py Python program
+featuring the following functionalities, each implemented as a separate function:
+
+1. Determine and print all factors of a given number.
+2. Compare two given strings and print whether they are equal or unequal.
+3. Calculate and display the frequency of a specific character within a given string.
+4. Count and print the total number of vowels present in a given string.
+5. Identify and print all numbers divisible by a specified number within a given range.
+6. Compute the factorial of a number using both recursive and iterative methods.
+7. Generate and display the Fibonacci series using both recursive and iterative methods.
+8. Check if a provided name is in a predefined list
+    and print "Welcome" if present or "See you next time" if absent.
+9. Determine if a given number is a prime number and print the result.
+10. Generate and print a list of all prime numbers within a specified range.
+11. Check if a given number is a perfect number and print the result.
+12. Generate and print a list of all perfect numbers within a specified range.
+
 """
 
 
