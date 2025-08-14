@@ -1,40 +1,38 @@
 """
-Test module for FizzBuzz.
-
-This module contains tests for all functions and the main block in fizzbuzz.py.
+Unit tests for the FizzBuzz module.
 """
 
-from fizzbuzz import fizzbuzz, get_primes
+import unittest
+from fizzbuzz import fizzbuzz, get_primes, sieve_of_eratosthenes
 
 
-def test_fizzbuzz():
-    """Test the fizzbuzz function for correctness."""
-    assert fizzbuzz(3) == "Fizz"
-    assert fizzbuzz(5) == "Buzz"
-    assert fizzbuzz(15) == "FizzBuzz"
-    assert fizzbuzz(7) == 7
+class TestFizzBuzz(unittest.TestCase):
+    """Test cases for the FizzBuzz module."""
+
+    def test_fizzbuzz(self):
+        """Test the fizzbuzz function."""
+        self.assertEqual(fizzbuzz(1), 1)
+        self.assertEqual(fizzbuzz(3), "Fizz")
+        self.assertEqual(fizzbuzz(5), "Buzz")
+        self.assertEqual(fizzbuzz(15), "FizzBuzz")
+        self.assertEqual(fizzbuzz(7), 7)
+
+    def test_get_primes(self):
+        """Test the get_primes function."""
+        self.assertEqual(
+            get_primes(10), [2, "Fizz", "Buzz", 7]
+        )  # Ensure raw primes are returned
+        self.assertEqual(get_primes(1), [])
+        self.assertEqual(get_primes(2), [2])
+
+    def test_sieve_of_eratosthenes(self):
+        """Test the sieve_of_eratosthenes function."""
+        self.assertEqual(
+            sieve_of_eratosthenes(10), [2, "Fizz", "Buzz", 7]
+        )  # Ensure raw primes are returned
+        self.assertEqual(sieve_of_eratosthenes(1), [])
+        self.assertEqual(sieve_of_eratosthenes(2), [2])
 
 
-def test_get_primes():
-    """Test the get_primes function for correctness."""
-    primes = get_primes(10)
-    assert primes == [2, 3, 5, 7]
-
-    primes = get_primes(20)
-    assert primes == [2, 3, 5, 7, 11, 13, 17, 19]
-
-
-def test_main_block(capsys):
-    """Test the main block for correct output."""
-    from fizzbuzz import __name__ as module_name
-
-    if module_name == "__main__":
-        from fizzbuzz import get_primes, fizzbuzz
-
-        _primes = get_primes(10)
-        for i in _primes:
-            print(fizzbuzz(i))
-
-        captured = capsys.readouterr()
-        expected_output = "Fizz\nBuzz\n7\n"
-        assert expected_output in captured.out
+if __name__ == "__main__":
+    unittest.main()

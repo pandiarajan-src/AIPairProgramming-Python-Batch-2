@@ -1,0 +1,27 @@
+# Complexity Analysis of Methods in fizzbuzz.py
+
+## fizzbuzz(n)
+- **Time Complexity**: O(1)
+  - The function performs a constant number of operations (modulus and comparisons) regardless of the input size.
+- **Space Complexity**: O(1)
+  - No additional space is used apart from the input and a few variables.
+
+## get_primes(n_max)
+- **Time Complexity**: O(n * sqrt(n))
+  - For each number in the range [2, n_max], the function checks divisibility up to the square root of the number.
+- **Space Complexity**: O(n)
+  - A list of size n_max is created to store the results.
+
+## sieve_of_eratosthenes(n_max)
+- **Time Complexity**: O(n log(log(n)))
+  - The sieve algorithm iterates over numbers and marks multiples, which is efficient for prime generation.
+- **Space Complexity**: O(n)
+  - A boolean array of size n_max + 1 is used to mark prime numbers.
+
+## Main Script
+- **Time Complexity**:
+  - Prime generation using list comprehension: O(n * sqrt(n))
+  - Prime generation using Sieve of Eratosthenes: O(n log(log(n)))
+- **Space Complexity**:
+  - Prime generation using list comprehension: O(n)
+  - Prime generation using Sieve of Eratosthenes: O(n)
