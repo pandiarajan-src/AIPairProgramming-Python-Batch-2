@@ -16,6 +16,16 @@ def fizzbuzz(n):
     return n
 
 
+def get_primes(n_max):
+    """Generate primes till n_max using a one-line list comprehension."""
+    return [
+        n
+        for n in range(2, n_max + 1)
+        if all(n % d != 0 for d in range(2, int(n**0.5) + 1))
+    ]
+
+
 if __name__ == "__main__":
-    for i in range(1, 101):
+    _primes = get_primes(100)
+    for i in _primes:
         print(fizzbuzz(i))

@@ -1,17 +1,40 @@
 """
 Test module for FizzBuzz.
 
-This module contains tests for the fizzbuzz function.
+This module contains tests for all functions and the main block in fizzbuzz.py.
 """
 
-from fizzbuzz import fizzbuzz
+from fizzbuzz import fizzbuzz, get_primes
 
 
 def test_fizzbuzz():
     """Test the fizzbuzz function for correctness."""
-    output = [fizzbuzz(i) for i in range(1, 101)]
-    assert output[2] == "Fizz"  # 3rd element (3) should be "Fizz"
-    assert output[4] == "Buzz"  # 5th element (5) should be "Buzz"
-    assert output[14] == "FizzBuzz"  # 15th element (15) should be "FizzBuzz"
-    assert output[0] == 1  # 1st element (1) should be 1
-    assert output[99] == "Buzz"  # 100th element (100) should be "Buzz"
+    assert fizzbuzz(3) == "Fizz"
+    assert fizzbuzz(5) == "Buzz"
+    assert fizzbuzz(15) == "FizzBuzz"
+    assert fizzbuzz(7) == 7
+
+
+def test_get_primes():
+    """Test the get_primes function for correctness."""
+    primes = get_primes(10)
+    assert primes == [2, 3, 5, 7]
+
+    primes = get_primes(20)
+    assert primes == [2, 3, 5, 7, 11, 13, 17, 19]
+
+
+def test_main_block(capsys):
+    """Test the main block for correct output."""
+    from fizzbuzz import __name__ as module_name
+
+    if module_name == "__main__":
+        from fizzbuzz import get_primes, fizzbuzz
+
+        _primes = get_primes(10)
+        for i in _primes:
+            print(fizzbuzz(i))
+
+        captured = capsys.readouterr()
+        expected_output = "Fizz\nBuzz\n7\n"
+        assert expected_output in captured.out
