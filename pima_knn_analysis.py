@@ -17,7 +17,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 # Load the dataset
-url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv"
+URL = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv"
 columns = [
     "Pregnancies",
     "Glucose",
@@ -29,21 +29,21 @@ columns = [
     "Age",
     "Outcome",
 ]
-data = pd.read_csv(url, names=columns)
+data = pd.read_csv(URL, names=columns)
 
 
 # Data visualization
-def visualize_data(data):
+def visualize_data(df):
     """Generate important charts for the dataset."""
     # Density plot
-    data.plot(
+    df.plot(
         kind="density", subplots=True, layout=(3, 3), sharex=False, figsize=(12, 10)
     )
     plt.suptitle("Density Plots")
     plt.show()
 
     # Bar chart
-    data["Outcome"].value_counts().plot(kind="bar", color=["blue", "orange"])
+    df["Outcome"].value_counts().plot(kind="bar", color=["blue", "orange"])
     plt.title("Bar Chart of Outcome")
     plt.xlabel("Outcome")
     plt.ylabel("Count")
@@ -51,13 +51,13 @@ def visualize_data(data):
 
     # Correlation matrix
     plt.figure(figsize=(10, 8))
-    correlation_matrix = data.corr()
+    correlation_matrix = df.corr()
     sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", fmt=".2f")
     plt.title("Correlation Matrix")
     plt.show()
 
     # Box and whisker plots
-    data.plot(
+    df.plot(
         kind="box",
         subplots=True,
         layout=(3, 3),
@@ -70,27 +70,27 @@ def visualize_data(data):
 
 
 # Build and evaluate KNN model
-def knn_model(data):
+def knn_model(df):
     """Build and evaluate a KNN classification model."""
-    X = data.iloc[:, :-1]
-    y = data.iloc[:, -1]
+    X = df.iloc[:, :-1]
+    y = df.iloc[:, -1]
 
     # Split the dataset
-    X_train, X_test, y_train, y_test = train_test_split(
+    x_train, x_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42
     )
 
     # Standardize the features
     scaler = StandardScaler()
-    X_train = scaler.fit_transform(X_train)
-    X_test = scaler.transform(X_test)
+    x_train = scaler.fit_transform(x_train)
+    x_test = scaler.transform(x_test)
 
     # Build the KNN model
     knn = KNeighborsClassifier(n_neighbors=5)
-    knn.fit(X_train, y_train)
+    knn.fit(x_train, y_train)
 
     # Make predictions
-    y_pred = knn.predict(X_test)
+    y_pred = knn.predict(x_test)
 
     # Evaluate the model
     accuracy = accuracy_score(y_test, y_pred)
