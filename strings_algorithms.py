@@ -65,6 +65,8 @@ def armstrong_in_range(start, end):
 
 def sieve_of_eratosthenes(limit):
     """Print all prime numbers in a range using Sieve of Eratosthenes."""
+    if limit < 2:
+        return []
     primes = [True] * (limit + 1)
     primes[0] = primes[1] = False
     for i in range(2, int(limit**0.5) + 1):

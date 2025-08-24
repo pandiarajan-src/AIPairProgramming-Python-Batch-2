@@ -70,6 +70,7 @@ class TestStringsAlgorithms(unittest.TestCase):
         Test the sieve_of_eratosthenes function with a sample limit.
         """
         self.assertEqual(sieve_of_eratosthenes(10), [2, 3, 5, 7])
+        self.assertEqual(sieve_of_eratosthenes(0), [])
 
     def test_word_frequency(self):
         """
