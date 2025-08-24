@@ -31,6 +31,7 @@ class TestFizzBuzz(unittest.TestCase):
             sieve_of_eratosthenes(10), [2, "Fizz", "Buzz", 7]
         )  # Ensure raw primes are returned
         self.assertEqual(sieve_of_eratosthenes(1), [])
+        self.assertEqual(sieve_of_eratosthenes(0), [])
         self.assertEqual(sieve_of_eratosthenes(2), [2])
 
 

@@ -28,6 +28,8 @@ def get_primes(n_max):
 
 def sieve_of_eratosthenes(n_max):
     """Generate primes till n_max using the Sieve of Eratosthenes."""
+    if n_max < 2:
+        return []
     sieve = [True] * (n_max + 1)
     sieve[0] = sieve[1] = False
     for start in range(2, int(n_max**0.5) + 1):
