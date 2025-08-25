@@ -4,9 +4,9 @@ pangram detection, anagram checks, and more.
 
 Prompt Given:
 
-Create a new python program strings_algorithms.py featuring the following functionalites,
-each bullet will be impletemented as a function
-and finally call all the function with examples in the main function.
+Create a new python program strings_algorithms.py featuring the following functionalities,
+each bullet will be implemented as a function,
+and finally call all the functions with examples in the main function.
 
 • What is a palindrome and find if the given number is a palindrome number
 • What is a pangram and find if the given sentence is a pangram
